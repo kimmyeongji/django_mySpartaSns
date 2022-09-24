@@ -13,6 +13,9 @@ def sign_up_view(request):
         password2 = request.POST.get('password2', None)
         bio = request.POST.get('bio', None)
 
+        if username == UserModel.objects.get(username=username):
+            return HttpResponse("기존에 가입한 회원과 이름이 동일합니다!")
+
         if password != password2:
             return render(request, 'user/signup.html')
         else:
@@ -33,7 +36,7 @@ def sign_in_view(request):
         me = UserModel.objects.get(username=username)
         if me.password == password:
             request.session['user'] = me.username
-            return HttpResponse("로그인 성공!")
+            return HttpResponse(f"{username} 로그인 성공!")
         else:
             return redirect('/sign-in/')
 
