@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import UserModel
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model #사용자가 데이터베이스 안에 있는지 검사하는 함수
-from django.contrib.auth import auth
+# from django.contrib.auth import auth
 
 
 # Create your views here.
@@ -39,7 +39,7 @@ def sign_in_view(request):
 
         if me is not None:
             auth.login(request, me)
-            return HttpResponse(f"{username} 로그인 성공!")
+            return redirect('/')
         else:
             return redirect('/sign-in/')
 
