@@ -5,9 +5,9 @@ from django.shortcuts import render, redirect
 def home(request):
     user = request.user.is_authenticated
     if user:
-        return render ('/tweet')
+        return redirect('/tweet/')
     else:
-        return redirect('/sign-in')
+        return redirect('/sign-in/')
 
 def tweet(request):
     if request.method == 'GET':

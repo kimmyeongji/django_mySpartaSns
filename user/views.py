@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import UserModel
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model #사용자가 데이터베이스 안에 있는지 검사하는 함수
-# from django.contrib.auth import auth
+from django.contrib import auth
 
 
 # Create your views here.
@@ -10,6 +10,7 @@ def sign_up_view(request):
     if request.method == 'GET':
         return render(request, 'user/signup.html')
     elif request.method == 'POST':
+        username = request.POST.get('username', None)
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
         password2 = request.POST.get('password2', None)
