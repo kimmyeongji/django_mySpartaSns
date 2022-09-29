@@ -1,1 +1,1 @@
-# django_mySpartaSns
+### django Project : mySpartaSns
